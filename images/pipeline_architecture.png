@@ -1,0 +1,88 @@
+<svg viewBox="0 0 1200 480" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="1200" height="480" fill="#0f172a"/>
+
+  <text x="600" y="40" text-anchor="middle" fill="#f8fafc" font-size="24" font-weight="bold">Energy Demand Forecasting — Multi-Agent Pipeline</text>
+  <text x="600" y="65" text-anchor="middle" fill="#94a3b8" font-size="14">Orchestration Pattern: Pipeline (sequential, shared global state)</text>
+
+  <!-- Agent 1: Data Agent -->
+  <g>
+    <rect x="40" y="140" width="230" height="160" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="155" y="170" text-anchor="middle" fill="#38bdf8" font-size="16" font-weight="bold">Data Agent</text>
+    <text x="155" y="192" text-anchor="middle" fill="#94a3b8" font-size="11">(tool-executing)</text>
+    <line x1="60" y1="205" x2="250" y2="205" stroke="#334155"/>
+    <text x="155" y="228" text-anchor="middle" fill="#cbd5e1" font-size="12">Loads historical</text>
+    <text x="155" y="246" text-anchor="middle" fill="#cbd5e1" font-size="12">demand CSV via</text>
+    <text x="155" y="264" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="bold">MCP Tool</text>
+    <text x="155" y="286" text-anchor="middle" fill="#64748b" font-size="10">writes: raw_data_summary,</text>
+    <text x="155" y="298" text-anchor="middle" fill="#64748b" font-size="10">historical_window</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M 270 220 L 320 220" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Agent 2: Forecasting Agent -->
+  <g>
+    <rect x="330" y="140" width="230" height="160" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="445" y="170" text-anchor="middle" fill="#38bdf8" font-size="16" font-weight="bold">Forecasting Agent</text>
+    <text x="445" y="192" text-anchor="middle" fill="#94a3b8" font-size="11">(tool-executing)</text>
+    <line x1="350" y1="205" x2="540" y2="205" stroke="#334155"/>
+    <text x="445" y="228" text-anchor="middle" fill="#cbd5e1" font-size="12">Weighted-average</text>
+    <text x="445" y="246" text-anchor="middle" fill="#cbd5e1" font-size="12">calculation via</text>
+    <text x="445" y="264" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="bold">MCP Tool</text>
+    <text x="445" y="286" text-anchor="middle" fill="#64748b" font-size="10">writes: forecast_mw,</text>
+    <text x="445" y="298" text-anchor="middle" fill="#64748b" font-size="10">forecast_method_used</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M 560 220 L 610 220" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Agent 3: Anomaly Agent -->
+  <g>
+    <rect x="620" y="140" width="230" height="160" rx="12" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+    <text x="735" y="170" text-anchor="middle" fill="#a78bfa" font-size="16" font-weight="bold">Anomaly Agent</text>
+    <text x="735" y="192" text-anchor="middle" fill="#94a3b8" font-size="11">(LLM reasoning)</text>
+    <line x1="640" y1="205" x2="830" y2="205" stroke="#334155"/>
+    <text x="735" y="228" text-anchor="middle" fill="#cbd5e1" font-size="12">Flags holidays,</text>
+    <text x="735" y="246" text-anchor="middle" fill="#cbd5e1" font-size="12">weekends, seasonal</text>
+    <text x="735" y="264" text-anchor="middle" fill="#c084fc" font-size="12" font-weight="bold">extremes (Gemini)</text>
+    <text x="735" y="286" text-anchor="middle" fill="#64748b" font-size="10">writes: anomaly_flags,</text>
+    <text x="735" y="298" text-anchor="middle" fill="#64748b" font-size="10">anomaly_notes</text>
+  </g>
+
+  <!-- Arrow 3 -->
+  <path d="M 850 220 L 900 220" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Agent 4: Report Agent -->
+  <g>
+    <rect x="910" y="140" width="250" height="160" rx="12" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+    <text x="1035" y="170" text-anchor="middle" fill="#a78bfa" font-size="16" font-weight="bold">Report Agent</text>
+    <text x="1035" y="192" text-anchor="middle" fill="#94a3b8" font-size="11">(LLM reasoning + RAG)</text>
+    <line x1="930" y1="205" x2="1140" y2="205" stroke="#334155"/>
+    <text x="1035" y="228" text-anchor="middle" fill="#cbd5e1" font-size="12">Retrieves guidelines,</text>
+    <text x="1035" y="246" text-anchor="middle" fill="#cbd5e1" font-size="12">synthesizes grounded</text>
+    <text x="1035" y="264" text-anchor="middle" fill="#c084fc" font-size="12" font-weight="bold">report (RAG + Gemini)</text>
+    <text x="1035" y="286" text-anchor="middle" fill="#64748b" font-size="10">writes: final_report</text>
+  </g>
+
+  <!-- Shared state bar -->
+  <rect x="40" y="360" width="1120" height="50" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="600" y="390" text-anchor="middle" fill="#94a3b8" font-size="13">Shared Global State (GraphState) — flows through every node, each agent writes only to its own keys</text>
+
+  <!-- connecting lines from agents down to state bar -->
+  <line x1="155" y1="300" x2="155" y2="360" stroke="#334155" stroke-dasharray="3,3"/>
+  <line x1="445" y1="300" x2="445" y2="360" stroke="#334155" stroke-dasharray="3,3"/>
+  <line x1="735" y1="300" x2="735" y2="360" stroke="#334155" stroke-dasharray="3,3"/>
+  <line x1="1035" y1="300" x2="1035" y2="360" stroke="#334155" stroke-dasharray="3,3"/>
+
+  <!-- Legend -->
+  <rect x="40" y="430" width="16" height="16" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <text x="65" y="443" fill="#cbd5e1" font-size="12">Deterministic tool-executing agent (no LLM)</text>
+  <rect x="400" y="430" width="16" height="16" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+  <text x="425" y="443" fill="#cbd5e1" font-size="12">LLM-reasoning agent (Gemini)</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+</svg>

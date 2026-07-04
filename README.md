@@ -2,6 +2,15 @@
 
 A multi-agent pipeline that forecasts grid energy demand and produces a grounded, plain-English operational report for grid operators — built for the Analytics Club Agentic AI Bootcamp (Learners' Space 2026) Week 4 Capstone.
 
+## Features
+- Multi-Agent Pipeline using LangGraph
+- MCP Tool Integration
+- Retrieval-Augmented Generation (RAG)
+- Google Gemini LLM
+- Shared Global State
+- Retry & Fallback Mechanisms
+- Grounded Operational Reports
+
 ## Problem Statement
 
 Grid operators don't just need a raw demand number — they need to know **why** a forecast is notable and **what to do about it**. A single forecasting model can't do this well: producing an accurate number, judging contextual risk (holidays, seasons, deviations), and writing an actionable recommendation grounded in operational guidelines are three genuinely different jobs.
@@ -9,6 +18,14 @@ Grid operators don't just need a raw demand number — they need to know **why**
 This project splits those jobs across four specialized agents coordinated through a pipeline, rather than one agent doing everything end-to-end.
 
 ## Architecture
+
+
+### Overall Pipeline Architecture
+The system follows a **Pipeline orchestration pattern** implemented using **LangGraph**. Each agent has a well-defined responsibility and passes its output to the next agent through a shared global state.
+<p align="center">
+<img src="images/pipeline_architecture.png" width="900">
+</p>
+**Figure 1:** Overall multi-agent pipeline architecture.
 
 **Orchestration pattern: Pipeline**
 The task is strictly sequential — you can't flag anomalies before a forecast exists, and can't write a report before both the forecast and anomaly context exist. Per the Week 4 orchestration theory, Pipeline is the correct pattern here (Supervisor/dynamic routing would be unnecessary complexity for a linear task).
@@ -27,6 +44,13 @@ The task is strictly sequential — you can't flag anomalies before a forecast e
 | **Anomaly/Context Agent** | LLM-reasoning | Judges whether the target date/forecast is contextually notable (holiday, weekend, seasonal extreme, large deviation) |
 | **Report Agent** | LLM-reasoning + RAG | Retrieves relevant internal grid guidelines and synthesizes a grounded, actionable report |
 
+### RAG Retrieval Flow
+The Report Agent retrieves the most relevant operational guidelines from the internal knowledge base before generating the final grounded report. This ensures that recommendations are based on documented policies rather than relying solely on the language model.
+<p align="center">
+<img src="images/rag_flow.png" width="800">
+</p>
+**Figure 2:** Retrieval-Augmented Generation workflow inside the Report Agent.
+
 ### State Management
 
 Shared global state (see `state/graph_state.py`), per the Week 4 rule of thumb ("start with shared global state for pipeline patterns"). Each agent only writes to its own designated keys, so agents never overwrite each other's work:
@@ -38,6 +62,13 @@ Shared global state (see `state/graph_state.py`), per the Week 4 rule of thumb (
 - All agents may append to `errors` for failure tracking
 
 ### Failure Handling
+
+### Failure Handling Workflow
+The pipeline is designed to degrade gracefully. If an agent fails, retry and fallback mechanisms ensure the pipeline still produces a useful result instead of terminating.
+<p align="center">
+<img src="images/failure_handling.png" width="850">
+</p>
+**Figure 3:** Retry and fallback mechanism across the pipeline.
 
 Three mechanisms are implemented (Week 4 required at least one):
 
