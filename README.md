@@ -113,6 +113,10 @@ python main.py --datetime "2026-07-04 14:00:00" --data-path data/energy_demand.c
 
 ## Example Output
 
+### Pipeline Demo
+
+![Pipeline Demo](images/demo.png)
+
 ```
 ============================================================
 ENERGY DEMAND FORECASTING -- MULTI-AGENT PIPELINE
