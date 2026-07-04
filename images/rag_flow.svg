@@ -1,0 +1,68 @@
+<svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="1100" height="380" fill="#0f172a"/>
+
+  <text x="550" y="40" text-anchor="middle" fill="#f8fafc" font-size="22" font-weight="bold">RAG Flow — Inside the Report Agent</text>
+  <text x="550" y="62" text-anchor="middle" fill="#94a3b8" font-size="13">Retrieval-Augmented Generation grounds the final report in real guidelines, not generic LLM output</text>
+
+  <!-- Step 1: Query -->
+  <g>
+    <rect x="30" y="120" width="200" height="110" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="130" y="150" text-anchor="middle" fill="#38bdf8" font-size="14" font-weight="bold">1. Build Query</text>
+    <text x="130" y="175" text-anchor="middle" fill="#cbd5e1" font-size="11">From forecast_mw +</text>
+    <text x="130" y="192" text-anchor="middle" fill="#cbd5e1" font-size="11">anomaly_flags</text>
+    <text x="130" y="215" text-anchor="middle" fill="#64748b" font-size="10">e.g. "holiday deviation</text>
+  </g>
+
+  <path d="M 235 175 L 275 175" stroke="#64748b" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <!-- Step 2: Knowledge base -->
+  <g>
+    <rect x="285" y="100" width="220" height="150" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="395" y="128" text-anchor="middle" fill="#f59e0b" font-size="14" font-weight="bold">2. Knowledge Base</text>
+    <text x="395" y="150" text-anchor="middle" fill="#cbd5e1" font-size="11">12 grid management</text>
+    <text x="395" y="166" text-anchor="middle" fill="#cbd5e1" font-size="11">guideline documents</text>
+    <rect x="310" y="178" width="170" height="16" rx="3" fill="#334155"/>
+    <rect x="310" y="198" width="170" height="16" rx="3" fill="#334155"/>
+    <rect x="310" y="218" width="170" height="16" rx="3" fill="#334155"/>
+    <text x="395" y="190" text-anchor="middle" fill="#94a3b8" font-size="9">peak_load_response.txt</text>
+    <text x="395" y="210" text-anchor="middle" fill="#94a3b8" font-size="9">forecast_deviation.txt</text>
+    <text x="395" y="230" text-anchor="middle" fill="#94a3b8" font-size="9">...9 more docs</text>
+  </g>
+
+  <path d="M 505 175 L 545 175" stroke="#64748b" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <!-- Step 3: TF-IDF retrieval -->
+  <g>
+    <rect x="555" y="100" width="220" height="150" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="665" y="128" text-anchor="middle" fill="#f59e0b" font-size="14" font-weight="bold">3. TF-IDF Retrieval</text>
+    <text x="665" y="152" text-anchor="middle" fill="#cbd5e1" font-size="11">Cosine similarity ranks</text>
+    <text x="665" y="169" text-anchor="middle" fill="#cbd5e1" font-size="11">all documents against</text>
+    <text x="665" y="186" text-anchor="middle" fill="#cbd5e1" font-size="11">the query</text>
+    <text x="665" y="212" text-anchor="middle" fill="#22c55e" font-size="12" font-weight="bold">Top-k = 3 returned</text>
+  </g>
+
+  <path d="M 775 175 L 815 175" stroke="#64748b" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <!-- Step 4: LLM synthesis -->
+  <g>
+    <rect x="825" y="90" width="240" height="170" rx="10" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+    <text x="945" y="118" text-anchor="middle" fill="#a78bfa" font-size="14" font-weight="bold">4. LLM Synthesis</text>
+    <text x="945" y="142" text-anchor="middle" fill="#cbd5e1" font-size="11">Gemini writes the final</text>
+    <text x="945" y="159" text-anchor="middle" fill="#cbd5e1" font-size="11">report using retrieved</text>
+    <text x="945" y="176" text-anchor="middle" fill="#cbd5e1" font-size="11">guidelines as grounding</text>
+    <text x="945" y="200" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="bold">context (not memory)</text>
+    <text x="945" y="228" text-anchor="middle" fill="#64748b" font-size="9">Report cites guideline</text>
+    <text x="945" y="242" text-anchor="middle" fill="#64748b" font-size="9">names explicitly</text>
+  </g>
+
+  <!-- Bottom note -->
+  <rect x="30" y="290" width="1035" height="60" rx="8" fill="#111827" stroke="#334155" stroke-dasharray="6,4"/>
+  <text x="547" y="315" text-anchor="middle" fill="#94a3b8" font-size="12">Why this matters: without RAG, the LLM would give generic advice from its training data.</text>
+  <text x="547" y="333" text-anchor="middle" fill="#94a3b8" font-size="12">With RAG, every recommendation is traceable back to a specific, real internal guideline document.</text>
+
+  <defs>
+    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+</svg>

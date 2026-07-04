@@ -3,6 +3,7 @@
 A multi-agent pipeline that forecasts grid energy demand and produces a grounded, plain-English operational report for grid operators — built for the Analytics Club Agentic AI Bootcamp (Learners' Space 2026) Week 4 Capstone.
 
 ## Features
+This project combines deterministic tools and LLM-based reasoning in a multi-agent pipeline to generate accurate forecasts together with grounded operational recommendations for grid operators.
 - Multi-Agent Pipeline using LangGraph
 - MCP Tool Integration
 - Retrieval-Augmented Generation (RAG)
@@ -23,8 +24,9 @@ This project splits those jobs across four specialized agents coordinated throug
 ### Overall Pipeline Architecture
 The system follows a **Pipeline orchestration pattern** implemented using **LangGraph**. Each agent has a well-defined responsibility and passes its output to the next agent through a shared global state.
 <p align="center">
-<img src="images/pipeline_architecture.png" width="900">
+<img src="images/pipeline_architecture.svg" width="900">
 </p>
+
 **Figure 1:** Overall multi-agent pipeline architecture.
 
 **Orchestration pattern: Pipeline**
@@ -47,8 +49,9 @@ The task is strictly sequential — you can't flag anomalies before a forecast e
 ### RAG Retrieval Flow
 The Report Agent retrieves the most relevant operational guidelines from the internal knowledge base before generating the final grounded report. This ensures that recommendations are based on documented policies rather than relying solely on the language model.
 <p align="center">
-<img src="images/rag_flow.png" width="800">
+<img src="images/rag_flow.svg" width="800">
 </p>
+
 **Figure 2:** Retrieval-Augmented Generation workflow inside the Report Agent.
 
 ### State Management
@@ -63,11 +66,12 @@ Shared global state (see `state/graph_state.py`), per the Week 4 rule of thumb (
 
 ### Failure Handling
 
-### Failure Handling Workflow
-The pipeline is designed to degrade gracefully. If an agent fails, retry and fallback mechanisms ensure the pipeline still produces a useful result instead of terminating.
+The pipeline is designed to degrade gracefully...
+
 <p align="center">
-<img src="images/failure_handling.png" width="850">
+<img src="images/failure_handling.svg" width="850">
 </p>
+
 **Figure 3:** Retry and fallback mechanism across the pipeline.
 
 Three mechanisms are implemented (Week 4 required at least one):
@@ -125,8 +129,7 @@ git clone <your-repo-url>
 cd energy_project
 pip install -r requirements.txt
 cp .env.example .env
-# then edit .env and paste in your free Google Gemini API key
-# (get one at https://aistudio.google.com/app/apikey)
+
 ```
 
 ## Usage
