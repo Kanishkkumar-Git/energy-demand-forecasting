@@ -1,0 +1,6 @@
+Guideline: Low Demand Risk
+Unusually low forecasted demand is not risk-free. Sustained low load
+can cause frequency instability if generation is not curtailed
+proportionally, and can mask developing equipment faults that would
+otherwise be caught under normal load. Report unusually low forecasts
+(more than 10% below average) alongside high ones.

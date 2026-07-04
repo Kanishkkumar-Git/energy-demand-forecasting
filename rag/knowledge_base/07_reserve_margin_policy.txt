@@ -1,0 +1,6 @@
+Guideline: Reserve Margin Policy
+Grid operators should maintain a minimum 15% reserve margin above
+forecasted peak demand at all times. When anomaly flags indicate
+elevated risk (holiday combined with seasonal extreme, or a forecast
+deviation above 10%), the reserve margin should be increased to 20%
+where generation capacity allows.

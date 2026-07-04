@@ -1,0 +1,6 @@
+Guideline: Winter Heating Demand
+Winter demand spikes are typically driven by electric heating and are
+more volatile than summer spikes because they correlate with sudden
+cold snaps rather than gradual warming. Forecast deviations above 10%
+in winter months warrant closer monitoring than the same deviation in
+milder seasons, since winter spikes can escalate faster.

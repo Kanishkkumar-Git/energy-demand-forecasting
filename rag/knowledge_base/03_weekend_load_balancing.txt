@@ -1,0 +1,6 @@
+Guideline: Weekend Load Balancing
+Weekend demand is generally 10-20% lower than weekday demand due to
+reduced commercial and industrial activity. This is a good window for
+scheduled maintenance on transmission lines, but operators should still
+maintain at least 15% reserve margin in case of unexpected weather-driven
+residential demand increases (e.g. early heatwaves or cold snaps).

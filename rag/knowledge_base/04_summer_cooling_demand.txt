@@ -1,0 +1,6 @@
+Guideline: Summer Cooling Demand
+During summer months, air conditioning load can account for up to 40%
+of total residential demand on hot days. When forecasts show summer
+demand trending above seasonal averages, operators should verify
+cooling-load-driven substations have adequate transformer headroom,
+as these are most prone to thermal overload during extended heatwaves.

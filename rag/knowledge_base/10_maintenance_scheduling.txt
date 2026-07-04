@@ -1,0 +1,5 @@
+Guideline: Maintenance Scheduling Windows
+Preferred maintenance windows are weekends or holidays with forecasted
+demand below the recent 30-day average, since these combine lower risk
+with lower disruption to consumers. Avoid scheduling maintenance when
+any deviation-above-average or extreme-season flag is present.

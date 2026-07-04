@@ -1,0 +1,21 @@
+# Core orchestration
+langgraph==1.2.7
+langchain-google-genai
+langchain-community==0.4.2
+langchain-text-splitters==1.1.2
+
+# MCP (Model Context Protocol) tools
+mcp==1.28.1
+
+# LLM API client (Google Gemini)
+google-generativeai
+
+# Data handling
+pandas==3.0.2
+numpy==2.4.4
+
+# RAG retrieval (TF-IDF based, lightweight)
+scikit-learn==1.8.0
+
+# Environment variables
+python-dotenv==1.2.2

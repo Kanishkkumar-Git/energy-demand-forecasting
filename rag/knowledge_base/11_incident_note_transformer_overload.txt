@@ -1,0 +1,7 @@
+Incident Note: Transformer Overload (Historical Reference)
+A past incident showed that consecutive days of forecasted demand
+above 10% deviation, without pre-emptive reserve activation, led to a
+transformer overload in a high-density residential feeder. The lesson
+learned: multi-day elevated forecasts should trigger a review even if
+each individual day is only moderately above threshold, cumulative
+stress matters, not just single-day peaks.

@@ -1,0 +1,6 @@
+Guideline: Renewable Variability Consideration
+On days with high forecasted demand and reliance on variable renewable
+generation (solar/wind), operators should cross-check weather-driven
+generation forecasts alongside demand forecasts. High demand combined
+with low renewable output is a compounding risk that increases reserve
+requirements beyond the standard policy.

@@ -1,0 +1,6 @@
+Guideline: Communication Protocol for Notable Forecasts
+Any forecast report flagged with a deviation, holiday, or seasonal
+extreme anomaly should be written in plain, non-technical language and
+include: the forecast value, the reason(s) it is notable, and a
+concrete recommended action. Avoid burying the recommendation in
+technical jargon, duty operators need to act quickly.

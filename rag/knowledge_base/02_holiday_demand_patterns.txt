@@ -1,0 +1,6 @@
+Guideline: Holiday Demand Patterns
+Public holidays typically see 8-15% lower industrial and commercial
+demand but can see residential demand spikes in the evening due to
+gatherings and increased home occupancy. Operators should not apply
+standard weekday load-balancing schedules on holidays; instead, shift
+reserve capacity toward residential feeders in the evening hours.

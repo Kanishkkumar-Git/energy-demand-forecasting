@@ -1,0 +1,7 @@
+Guideline: Forecast Deviation Thresholds
+A forecast deviating less than 5% from the historical average is
+considered routine and requires no special action. A deviation of
+5-10% should be logged and monitored. A deviation greater than 10%
+should trigger a review by the duty operator and may require
+pre-emptive reserve activation, especially if combined with a holiday,
+weekend, or extreme-season flag.

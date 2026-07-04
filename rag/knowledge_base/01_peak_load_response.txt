@@ -1,0 +1,6 @@
+Guideline: Peak Load Response
+When forecasted demand exceeds 105% of the recent 30-day average, grid
+operators should pre-emptively activate demand-response programs and
+notify standby generation units at least 4 hours in advance. Sudden
+peak loads without warning are the leading cause of localized voltage
+sags in urban distribution zones.
